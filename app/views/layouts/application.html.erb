@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>기억보관소</title>
+
+
+
+  <nav aria-label="breadcrumb" style="background-color: #FFF29E;">
+    <ol class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Memory", posts_path %></li>
+      <li><%= link_to "Contact", 'https://www.instagram.com/h0131m/', :target => "_blank" %></li>
+    </ol>
+  </nav>
+  <nav class="navbar navbar-light" style="background-color: #FFF29E;">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+    </form>
+  </nav>
+
+    <title> 하루의 기록 </title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <ul>
+
+        <li><%= link_to '[회원정보 수정]', edit_user_registration_path %>&nbsp;|&nbsp;<%= link_to '[로그아웃]', destroy_user_session_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><%= link_to '[회원가입]', new_user_registration_path %>&nbsp;|&nbsp;<%= link_to '[로그인]', new_user_session_path %></li>
+          <br>
+      </ul>
+    <% end %>
+
+    
+
+    <%= yield %>
+  </body>
+</html>

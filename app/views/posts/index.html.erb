@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>하루의 기록</h1>
+
+<table>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= link_to '보기', post %></td>
+        <td><%= link_to '수정', edit_post_path(post) %></td>
+        <td><%= link_to '삭제', post, method: :delete, data: { confirm: '삭제하시겠습니까?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '새로운 기록 남기기', new_post_path %>
